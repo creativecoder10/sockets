@@ -1,45 +1,32 @@
 const express = require("express");
-const socket = require("socket.io");
-var printLog = require("./printLog");
-let connectCounter = 0;
+const http = require("http");
+const WebSocket = require("ws");
 
-const port = 4000;
-
-//  app set up
+var printlog = require("./printLog");
 
 const app = express();
 
-//  listen to port number
+//initialize a simple http server
+const server = http.createServer(app);
 
-const server = app.listen(port, () => {});
+//initialize the WebSocket server instance
+const wss = new WebSocket.Server({ server });
 
-// Static files
+wss.on("connection", ws => {
+  //connection is up, let's add a simple simple event
+  ws.on("message", (message) => {
 
-app.use(express.static("public"));
-
-// Socket set up for server side
-// 1. Use the instance of socket module
-// 2. Create a socket for a specific server ( serving files on a specific port )
-
-const io = socket(server);
-
-/**  3. Create a connection when an event 'connection' is being fired from the client . When a connection is made, a socket object with socket
- * details is being passed to the callback*/
-
-io.on("connection", socket => {
-  connectCounter++;
-
-  // Listening to chat sent
-  socket.on("chat", data => {
-    printLog(data.message);
-    console.log("Client", io.sockets.clients.length, "is connected");
-    if (data.message.trim() === "Hello") {
-      data.message = "Websockets!";
-      io.sockets.emit("chat", data);
+//log the received message and send it back to the client
+    printlog(message+"Client "+wss.clients.size+" connected");
+    
+// If Hello passed, return Websockets
+    if (message.trim()==='Hello'){
+      ws.send('Websockets');
     }
-  });
+   });
+});
 
-  socket.on("typing", data => {
-    socket.broadcast.emit("typing", data);
-  });
+//start our server
+server.listen(4000, () => {
+  console.log(`Server started on port ${server.address().port} :)`);
 });
