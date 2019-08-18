@@ -1,0 +1,40 @@
+#container {
+    display: flex;
+    flex-flow: column;
+}
+
+#chat-window{
+    height: 400px;
+    width: 90%;
+    margin: auto;
+    margin-bottom:1em;
+}
+
+#output {
+    border: 1px solid black;
+    height: 90%;
+    overflow:auto;
+}
+
+#feedback {
+    border: 1px solid blue;
+    height: 10%;
+  }
+
+#handle{
+    width: 90%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+#message{
+    width: 90%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+#send{
+    width: 60%;
+    margin: auto;
+    margin-top: 1em;
+}
