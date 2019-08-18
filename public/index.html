@@ -1,23 +1,21 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 
-<html>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+  <html>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
-  <body>
-    <div id="container">
-      <div id="chat-window">
-        <label>Chat Window</label>
-        <div id="output"></div>
-        <div id="feedback"></div>
+    <body>
+      <div id="container">
+        <div id="chat-window">
+          <label>Chat Window</label>
+          <div id="output"></div>
+          <div id="feedback"></div>
+        </div>
+        <label>Message</label>
+        <input id="message" type="text" placeholder="Message" />
+        <button id="send">Send</button>
       </div>
-      <label>Handle</label>
-      <input id="handle" type="text" placeholder="Handle" />
-      <label>Message</label>
-      <input id="message" type="text" placeholder="Message" />
-      <button id="send">Send</button>
-    </div>
-  </body>
+    </body>
 
-  <script src="chat.js"></script>
-</html>
+    <script src="chat.js"></script>
+  </html>
