@@ -4,4 +4,6 @@
 
 3. open the Client window by opening the index.html file
 
-4. You can open multiple windows for the chat window 
+4. Provide inputs to the websocket through the message text box
+
+5. You can open multiple windows for the chat window 
