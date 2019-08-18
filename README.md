@@ -2,6 +2,6 @@
 
 2. npm run start to run the application with nodemon
 
-3. open the Client window at localhost:4000 
+3. open the Client window by opening the index.html file
 
 4. You can open multiple windows for the chat window 
