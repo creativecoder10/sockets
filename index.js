@@ -9,6 +9,16 @@ const app = express();
 //initialize a simple http server
 const server = http.createServer(app);
 
+
+//start our server
+server.listen(4000, () => {
+  console.log(`Server started on port ${server.address().port} :)`);
+});
+
+// Static files
+app.use(express.static('public'));
+
+
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
 
@@ -26,7 +36,3 @@ wss.on("connection", ws => {
    });
 });
 
-//start our server
-server.listen(4000, () => {
-  console.log(`Server started on port ${server.address().port} :)`);
-});
